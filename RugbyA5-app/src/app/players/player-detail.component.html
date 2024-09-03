@@ -1,0 +1,69 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle + ': ' + player?.firstName + ' ' + player?.lastName}}
+    </div>
+  
+    <div class='card-body'
+         *ngIf='player'>
+        <div class='col-md-4'>
+        <img class='center-block img-responsive'
+                [style.width.px]='200'
+                [style.margin.px]='2'
+                [src]='player.photoUrl'
+                [title]='player.firstName'>
+        </div>
+      <div class='row'>
+        <div class='col-md-8'>
+            <div class='row'>
+                <div class='col-md-4'>Licence:</div>
+                <div class='col-md-8'>{{player.licenceId}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Gender:</div>
+                <div class='col-md-8'>{{player.gender}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>First Name:</div>
+                <div class='col-md-8'>{{player.firstName | titlecase}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Last Name:</div>
+                <div class='col-md-8'>{{player.lastName | titlecase}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Birth Date:</div>
+                <div class='col-md-8'>{{player.birthDate}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Phone Number:</div>
+                <div class='col-md-8'>{{player.phoneNumber}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Address:</div>
+                <div class='col-md-8'>
+                    <div class='col-md-8'>{{player.address1}} </div>
+                    <div class='col-md-8'>{{player.address2}} </div>
+                    <div class='col-md-8'>{{player.postalCode + ", " + player.country }}</div>
+                </div>
+                
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Licence Types:</div>
+                <div class='col-md-8'>{{player.licenceTypes}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Club:</div>
+                <div class='col-md-8'>{{player.clubName + ' (' + player.clubCode + ')'}}</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class='card-footer'>
+      <button class='btn btn-outline-secondary'
+              style='width:80px'
+              (click)='onBack()'>
+        <i class='fa fa-chevron-left'></i> Back
+      </button>
+    </div>
+  </div>

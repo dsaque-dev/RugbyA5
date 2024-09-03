@@ -1,0 +1,67 @@
+[
+   {
+       "playerId": 1,
+       "position": 1,
+       "licenceId": "197600000001",
+       "firstName": "david",
+       "lastName": "saqué",
+       "gender": "male",
+       "birthDate": "14/06/1976",
+       "licenceTypes": ["DC4","EDU","RLSP"],
+       "trainerCertificate": ["BF INIT","BF DEV", "BF R5", "BF BABY"],
+       "clubName": "Antony Metro 92",
+       "clubCode": "4986"
+   },
+   {
+       "playerId": 2,
+       "position": 2,
+       "licenceId": "197600000001",
+       "firstName": "Christelle",
+       "lastName": "fillatre",
+       "gender": "female",
+       "birthDate": "11/01/1974",
+       "licenceTypes": ["DC4","RLSP"],
+       "trainerCertificate": [],
+       "clubName": "Antony Metro 92",
+       "clubCode": "4986"
+   },
+   {
+       "playerId": 3,
+       "position": 3,
+       "licenceId": "200500000001",
+       "firstName": "llorenc",
+       "lastName": "Saqué",
+       "gender": "male",
+       "birthDate": "03/12/2005",
+       "licenceTypes": ["COMP"],
+       "trainerCertificate": [],
+       "clubName": "Antony Metro 92",
+       "clubCode": "4986"
+    },
+    {
+       "playerId": 4,
+       "position": 4,
+       "licenceId": "200900000001",
+       "firstName": "maiwenn",
+       "lastName": "Saqué",
+       "gender": "female",
+       "birthDate": "20/05/2009",
+       "licenceTypes": ["RLSP", "DC4"],
+       "trainerCertificate": [],
+       "clubName": "Fresnes",
+       "clubCode": "5555"
+    },
+    {
+       "playerId": 5,
+       "position": 5,
+       "licenceId": "200900000001",
+       "firstName": "Jane",
+       "lastName": "Do",
+       "gender": "female",
+       "birthDate": "03/05/2000",
+       "licenceTypes": [],
+       "trainerCertificate": [],
+       "clubName": "",
+       "clubCode": ""
+    }
+]

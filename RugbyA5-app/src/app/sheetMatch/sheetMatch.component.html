@@ -1,0 +1,106 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        stepper
+        sompetition
+        select players
+        select referee
+        select referent
+    
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Choose the players (max. 11)</ng-template>
+            <mat-form-field style="width:300px">
+              <mat-label>Players</mat-label>
+            
+              <mat-selection-list #players style="width:300px">
+                  
+                    @for (playerName of listOfPlayers; track playerName) {
+                        <mat-list-option #player disabled='{{players.selectedOptions.selected.length >= maxPlayers && !player.selected}}'>
+                            {{playerName.firstName + " " + playerName.lastName}}
+                        </mat-list-option>
+                    }
+              </mat-selection-list>
+            
+              <p>
+                Players selected: <input matInput readonly placeholder={{players.selectedOptions.selected.length}} formControlName="firstCtrl" required>
+              </p>
+            
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Choose your 2 Referee">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Choose the 2 referees</ng-template>
+            <mat-form-field style="width:300px">
+              <mat-label>Players</mat-label>
+            
+              <mat-selection-list #referees style="width:300px">
+                  
+                    @for (refereeName of listOfPlayers; track refereeName) {
+                        <mat-list-option #referee disabled='{{referees.selectedOptions.selected.length >= maxReferees && !referee.selected}}'>
+                            {{refereeName.firstName + " " + refereeName.lastName}}
+                        </mat-list-option>
+                    }
+              </mat-selection-list>
+            
+              <p>
+                Referees selected: <input matInput readonly placeholder={{referees.selectedOptions.selected.length}} formControlName="secondCtrl" required>
+              </p>
+            
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" label="Choose your Referent">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Choose the referent</ng-template>
+                <mat-form-field style="width:300px">
+                  <mat-label>Players</mat-label>
+                
+                  <mat-selection-list #referents style="width:300px" >
+                      
+                        @for (referentName of listOfPlayers; track referentName) {
+                            <mat-list-option #referent disabled='{{referents.selectedOptions.selected.length >= maxReferents && !referent.selected}}'>
+                                {{referentName.firstName + " " + referentName.lastName}}
+                            </mat-list-option>
+                        }
+                  </mat-selection-list>
+                
+                  <p>
+                    Referent selected: <input matInput readonly placeholder={{referents.selectedOptions.selected.length}} formControlName="thirdCtrl" required>
+                  </p>
+                
+                </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Overview</ng-template>
+          <p>You are now done.</p>
+          <p>Selected:</p>
+            <ul>
+            <li *ngFor="let i of referents.selectedOptions.selected">
+                {{ i.value }}
+            </li>
+            </ul>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+</div>

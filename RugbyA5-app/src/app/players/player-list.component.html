@@ -1,0 +1,97 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            table angular material
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="announceSortChange($event)">
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef matSortDisabled>
+                        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                        [checked]="selection.hasValue() && isAllSelected()"
+                                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                        [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="$event ? selection.toggle(row) : null"
+                                        [checked]="selection.isSelected(row)"
+                                        [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                  <!-- Gender Column -->
+                <ng-container matColumnDef="gender">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by gender"> Gender </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                </ng-container>
+                
+                <!-- firstName Column -->
+                <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by First Name"> First Name </th>
+                    <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players', element.playerId]">{{element.firstName | titlecase }} </a></td>
+                </ng-container>
+
+                <!-- lastName Column -->
+                <ng-container matColumnDef="lastName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Last Name"> Last Name </th>
+                    <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players', element.playerId]"> {{element.lastName | uppercase}} </a></td>
+                </ng-container>
+
+                <!-- birth date Column -->
+                <ng-container matColumnDef="birthDate" matSortDisabled>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Birth Date"> Birth Date </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.birthDate }} </td>
+                </ng-container>
+
+                <!-- licenceID Column -->
+                <ng-container matColumnDef="licenceId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Licence"> Licence </th>
+                    <td mat-cell *matCellDef="let element"> {{element.licenceId}} </td>
+                </ng-container>
+
+                <!-- licence Types Column -->
+                <ng-container matColumnDef="licenceTypes" matSortDisabled>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Licence Type"> Licence Types </th>
+                    <td mat-cell *matCellDef="let element"> {{element.licenceTypes}} </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <!--<div class="table-responsive">
+            table angular
+            <table class='table' *ngIf="players && players.length">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th >Gender</th>
+                        <th >First Name</th>
+                        <th >Last Name</th>
+                        <th >Birth Date</th>
+                        <th >Licence ID</th>
+                        <th>Licence Types</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of players">
+                        <td><mat-checkbox></mat-checkbox></td>
+                        <td>{{ player.gender }}</td>
+                        <td>{{ player.firstName }}</td>
+                        <td>{{ player.lastName }}</td>
+                        <td>{{ player.birthDate }}</td>
+                        <td>{{ player.licenceId }}</td>
+                        <td>{{ player.licenceTypes }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    -->
+    </div>
+</div>
