@@ -16,7 +16,8 @@ export class PlayerService {
   // because Stackblitz can't find the api folder.
   // private productUrl = 'assets/products/products.json';
   //private playerUrl = 'api/players/players.json';
-  private playerUrl = 'http://localhost:5096/players';
+  private playersUrl = 'http://localhost:5096/players';
+  private playerUrl = 'http://localhost:5096/player/';
 
   players: IPlayer[] = [];
 
@@ -24,7 +25,7 @@ export class PlayerService {
 
   getPlayers(): Observable<IPlayer[]> {
 
-    return this.http.get<IPlayer[]>(this.playerUrl, httpOptions)
+    return this.http.get<IPlayer[]>(this.playersUrl, httpOptions)
       .pipe(
         tap(data => console.log('All: ', JSON.stringify(data))),
         catchError(this.handleError)
@@ -34,12 +35,20 @@ export class PlayerService {
   // Get one player
   // Since we are working with a json file, we can only retrieve all players
   // So retrieve all players and then find the one we want using 'map'
-  getPlayer(id: number): Observable<IPlayer | undefined> {
+  /*getPlayer(id: number): Observable<IPlayer | undefined> {
     return this.getPlayers()
       .pipe(
         map((players: IPlayer[]) => players.find(p => p.playerId === id))
       );
-  }
+  }*/
+    getPlayer(id: number): Observable<IPlayer> {
+
+        return this.http.get<IPlayer>(this.playerUrl+id, httpOptions)
+        .pipe(
+          tap(data => console.log('All: ', JSON.stringify(data))),
+          catchError(this.handleError)
+        );
+    }
 
   private handleError(err: HttpErrorResponse): Observable<never> {
     // in a real world app, we may send the server to some remote logging infrastructure
