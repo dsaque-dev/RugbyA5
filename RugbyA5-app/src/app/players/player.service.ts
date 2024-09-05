@@ -1,8 +1,12 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError, map } from "rxjs";
 
 import { IPlayer } from "./player";
+
+const httpOptions = {
+  headers: new HttpHeaders({ "Content-Type": "application/json", "Authorization": "c31z" })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +15,16 @@ export class PlayerService {
   // If using Stackblitz, replace the url with this line
   // because Stackblitz can't find the api folder.
   // private productUrl = 'assets/products/products.json';
-  private playerUrl = 'api/players/players.json';
+  //private playerUrl = 'api/players/players.json';
+  private playerUrl = 'http://localhost:5096/players';
+
+  players: IPlayer[] = [];
 
   constructor(private http: HttpClient) { }
 
   getPlayers(): Observable<IPlayer[]> {
-    return this.http.get<IPlayer[]>(this.playerUrl)
+
+    return this.http.get<IPlayer[]>(this.playerUrl, httpOptions)
       .pipe(
         tap(data => console.log('All: ', JSON.stringify(data))),
         catchError(this.handleError)

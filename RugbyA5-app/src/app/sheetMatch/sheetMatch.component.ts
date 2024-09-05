@@ -1,5 +1,6 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgFor } from "@angular/common";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -24,7 +25,8 @@ import {SelectionModel} from '@angular/cdk/collections';
         MatFormFieldModule,
         MatInputModule,
         MatListModule,
-        RouterLink]
+        RouterLink,
+        NgFor]
 })
 
 export class SheetMatchComponent implements OnInit, OnDestroy {
